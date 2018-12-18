@@ -39,11 +39,11 @@ namespace wsEmaresaWCF
         //    return composite;
         //}
 
-        public string GetJSONtoXML(string json)
+        public string GetJSONtoXML(string Json)
         {
             try
             {
-                var xmlNode = JsonConvert.DeserializeXmlNode(json).OuterXml;
+                var xmlNode = JsonConvert.DeserializeXmlNode(Json).OuterXml;
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
                 StringBuilder sb = new StringBuilder();
@@ -51,7 +51,7 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirJSONaXML] -- JSON: " + json + " | " + "XML: " + xmlNode);
+                          "[ConvertirJSONaXML] -- JSON: " + Json + " | " + "XML: " + xmlNode);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 return xmlNode;
@@ -75,7 +75,7 @@ namespace wsEmaresaWCF
             }
         }
 
-        public string GetOK(string jsonString)
+        public string GetOK(string JsonString)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace wsEmaresaWCF
                     sb.Append(Environment.NewLine +
                               DateTime.Now.ToShortDateString() + " " +
                               DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + jsonString + " | " + "Salida: " + salida);
+                              "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
 
@@ -160,7 +160,7 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[RetornaOK] -- Entrada: " + jsonString + " | " + "Salida: " + salida);
+                          "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida
@@ -168,7 +168,7 @@ namespace wsEmaresaWCF
             }
         }
 
-        public string GetXMLtoJSON(string xml)
+        public string GetXMLtoJSON(string Xml)
         {
             try
             {
@@ -177,7 +177,7 @@ namespace wsEmaresaWCF
                 //Generar un nuevo documento XML
                 XmlDocument doc = new XmlDocument();
                 //Asignar al documento el XML enviado
-                doc.LoadXml(xml);
+                doc.LoadXml(Xml);
                 //Utilizar variable json para realizar conversión
                 json = JsonConvert.SerializeXmlNode(doc);
                 //Escribir log
@@ -187,7 +187,7 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirXMLaJSON] -- XML: " + xml + " | " + "Salida JSON: " + json);
+                          "[ConvertirXMLaJSON] -- XML: " + Xml + " | " + "Salida JSON: " + json);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida

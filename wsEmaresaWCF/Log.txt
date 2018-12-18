@@ -101,3 +101,5 @@ Nombre del parámetro: s"}
 Nombre del parámetro: s"}
 17-12-2018 21:42: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
 Nombre del parámetro: s"}
+18-12-2018 14:35: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: b. Line 1, position 1."}
+18-12-2018 14:36: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: b. Line 1, position 1."}

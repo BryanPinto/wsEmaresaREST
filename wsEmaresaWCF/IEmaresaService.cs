@@ -12,35 +12,37 @@ namespace wsEmaresaWCF
     [ServiceContract]
     public interface IEmaresaService
     {
-        [OperationContract]
+        
         [WebGet(UriTemplate = "/GetData")]
+        [OperationContract]
         string GetData();
 
         //[OperationContract]
         //ServiciosWeb GetDataUsingDataContract(ServiciosWeb composite);
-        [OperationContract]
+        
         [WebInvoke(UriTemplate = "/GetOK", 
             Method = "POST",
             ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
-        
-        string GetOK(string jsonString);
-
         [OperationContract]
+        string GetOK(string JsonString);
+
+        
         [WebInvoke(UriTemplate = "/GetJSONtoXML", 
             Method = "POST",
-            //ResponseFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json,
             RequestFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare)]  
-        string GetJSONtoXML(string json);
-
+            BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
+        string GetJSONtoXML(string Json);
+
+        
         [WebInvoke(UriTemplate = "/GetXMLtoJSON", 
             Method = "POST",
             ResponseFormat = WebMessageFormat.Json)]
-        
-        string GetXMLtoJSON(string xml);
+        [OperationContract]
+        string GetXMLtoJSON(string Xml);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
@@ -53,12 +55,12 @@ namespace wsEmaresaWCF
         [DataMember]
         public int value;
         [DataMember]
-        public string jsonString { set; get; }
+        public string JsonString { set; get; }
         [DataMember]
-        public string xml { set; get; }
+        public string Xml { set; get; }
         [DataMember]
-        public string json { set; get; }
+        public string Json { set; get; }
         [DataMember]
-        public string test { set; get; }
+        public string Test { set; get; }
     }
 }
