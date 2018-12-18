@@ -43,6 +43,7 @@ namespace wsEmaresaWCF
         {
             try
             {
+                //var jsonConvert = JsonConvert.SerializeObject(Json);
                 var xmlNode = JsonConvert.DeserializeXmlNode(Json).OuterXml;
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;

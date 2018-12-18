@@ -31,7 +31,7 @@ namespace wsEmaresaWCF
         
         [WebInvoke(UriTemplate = "/GetJSONtoXML", 
             Method = "POST",
-            ResponseFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Xml,
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]

@@ -103,3 +103,31 @@ Nombre del parámetro: s"}
 Nombre del parámetro: s"}
 18-12-2018 14:35: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: b. Line 1, position 1."}
 18-12-2018 14:36: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: b. Line 1, position 1."}
+18-12-2018 15:36: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:42: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:43: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:44: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:45: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:47: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 15:56: [ConvertirJSONaXML] -- Salida: {"Error":"XmlNodeConverter can only convert JSON that begins with an object."}
+18-12-2018 17:37: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: a. Line 1, position 1."}
+18-12-2018 17:42: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 17:57: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 17:59: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 17:59: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 17:59: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+18-12-2018 18:03: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 18:04: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 18:12: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='xxxxx'","Id_Familia":"xxxx","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='xxxxx'"><Id_Familia>xxxx</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 18:13: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='xxxxx'","Id_Familia":"xxxx","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='xxxxx'"><Id_Familia>xxxx</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 18:14: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+18-12-2018 18:15: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"@businessKey":"SKU='881222922'","Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados businessKey="SKU='881222922'"><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
