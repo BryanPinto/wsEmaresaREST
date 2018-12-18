@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="wsEmaresaWCF.EmaresaService" CodeBehind="EmaresaService.svc.cs" %>

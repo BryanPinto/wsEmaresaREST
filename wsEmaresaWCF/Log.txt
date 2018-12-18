@@ -1,0 +1,103 @@
+
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:26: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:28: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:29: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:30: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:31: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:31: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:31: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:36: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:36: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:36: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:36: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:37: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:41: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 12:43: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:44: [RetornaOK] -- Entrada:  | Salida: {"Error":"Error en respuesta"}
+17-12-2018 12:44: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:44: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:45: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:45: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:52: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 12:53: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 19:22: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 19:24: [RetornaOK] -- Entrada:  | Salida: {"Respuesta":"OK"}
+17-12-2018 19:28: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:41: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:42: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:44: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:45: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:51: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 19:57: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 20:22: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 20:46: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 20:50: [ConvertirJSONaXML] -- Salida: {"Error":"Invalid character after parsing property name. Expected ':' but got: e. Line 1, position 15."}
+17-12-2018 20:52: [ConvertirJSONaXML] -- Salida: {"Error":"Invalid JavaScript property identifier character: {. Line 1, position 7."}
+17-12-2018 20:53: [ConvertirJSONaXML] -- JSON: {"Error":""} | XML: <Error></Error>
+17-12-2018 21:32: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 21:34: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+17-12-2018 21:42: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
