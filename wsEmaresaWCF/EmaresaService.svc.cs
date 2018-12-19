@@ -44,7 +44,7 @@ namespace wsEmaresaWCF
         {
             try
             {
-                var jsonRequest = new JavaScriptSerializer().Serialize(Json);
+                var jsonRequest = Json.ToString();
                 var xmlNode = JsonConvert.DeserializeXmlNode(jsonRequest);
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
@@ -77,7 +77,7 @@ namespace wsEmaresaWCF
             }
         }
 
-        public string GetOK(string JsonString)
+        public Respuesta GetOK(Dummy JsonString)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace wsEmaresaWCF
                     sb.Append(Environment.NewLine +
                               DateTime.Now.ToShortDateString() + " " +
                               DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
+                              "[RetornaOK] -- Entrada: " + JsonString.mensaje + " | " + "Salida: " + salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
 
@@ -146,7 +146,11 @@ namespace wsEmaresaWCF
 
                     string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
                     //retornar salida
-                    return salida;
+                    //string dummyEnJson = new JavaScriptSerializer().Serialize(JsonString);
+                    //return JsonConvert.DeserializeXmlNode(dummyEnJson);
+                    Respuesta error = new Respuesta();
+                    error.mensaje = respuestaBizagi;
+                    return (error);
                 }
             }
             catch (Exception ex)
@@ -164,7 +168,11 @@ namespace wsEmaresaWCF
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida
-                return salida;
+                Respuesta error = new Respuesta();
+                error.mensaje = ex.Message;
+                var json = new JavaScriptSerializer().Serialize(error);
+
+                return (error);
             }
         }
 

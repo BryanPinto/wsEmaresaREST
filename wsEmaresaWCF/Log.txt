@@ -153,3 +153,25 @@ Nombre del parámetro: s"}
 19-12-2018 19:11: [ConvertirJSONaXML] -- Salida: {"Error":"XmlNodeConverter can only convert JSON that begins with an object."}
 19-12-2018 19:14: [ConvertirJSONaXML] -- JSON: {} | XML: 
 19-12-2018 19:14: [ConvertirJSONaXML] -- JSON: {} | XML: 
+19-12-2018 19:24: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: S. Line 0, position 0."}
+19-12-2018 19:34: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:39: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:39: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:40: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:40: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:41: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:41: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:41: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:41: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:41: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:42: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:42: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:42: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:43: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:44: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:44: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:47: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:47: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
+19-12-2018 19:49: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"Error en respuesta"}
+19-12-2018 19:50: [RetornaOK] -- Entrada: algo | Salida: {"Respuesta":"OK"}
+19-12-2018 19:51: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}

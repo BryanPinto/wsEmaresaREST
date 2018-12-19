@@ -9,6 +9,16 @@ using System.Xml;
 
 namespace wsEmaresaWCF
 {
+    public class Dummy
+        {
+        public string mensaje { get; set; }
+    }
+
+    public class Respuesta
+    {
+        public string mensaje { get; set; }
+    }
+
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IEmaresaService
@@ -23,9 +33,11 @@ namespace wsEmaresaWCF
         
         [WebInvoke(UriTemplate = "/GetOK", 
             Method = "POST",
+            ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
-        string GetOK(string JsonString);
+        Respuesta GetOK(Dummy JsonString);
 
         
         [WebInvoke(UriTemplate = "/GetJSONtoXML", 
