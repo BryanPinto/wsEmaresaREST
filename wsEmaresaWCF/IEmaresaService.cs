@@ -22,8 +22,6 @@ namespace wsEmaresaWCF
         
         [WebInvoke(UriTemplate = "/GetOK", 
             Method = "POST",
-            ResponseFormat = WebMessageFormat.Json,
-            RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
         string GetOK(string JsonString);

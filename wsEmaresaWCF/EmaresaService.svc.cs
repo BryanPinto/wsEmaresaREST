@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Xml;
 using Newtonsoft.Json;
 
@@ -43,7 +44,6 @@ namespace wsEmaresaWCF
         {
             try
             {
-                //var jsonConvert = JsonConvert.SerializeObject(Json);
                 var xmlNode = JsonConvert.DeserializeXmlNode(Json).OuterXml;
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
