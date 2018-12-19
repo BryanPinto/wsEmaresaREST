@@ -137,3 +137,12 @@ Nombre del parámetro: s"}
 19-12-2018 10:41: [RetornaOK] -- Entrada: hola | Salida: {"Respuesta":"OK"}
 19-12-2018 10:41: [RetornaOK] -- Entrada: hola | Salida: {"Respuesta":"OK"}
 19-12-2018 10:42: [RetornaOK] -- Entrada: hola este es un texto de prueba y va como application/json | Salida: {"Respuesta":"OK"}
+19-12-2018 11:01: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:01: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Error":"No se pudo cargar una sección de configuración de extremo para el contrato 'BizagiCapaSOA.WorkflowEngineSOASoap' porque se encontró más de una configuración de extremo para dicho contrato. Indique la sección de configuración de extremo preferida por nombre."}
+19-12-2018 11:01: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:01: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Error":"No se pudo cargar una sección de configuración de extremo para el contrato 'BizagiCapaSOA.WorkflowEngineSOASoap' porque se encontró más de una configuración de extremo para dicho contrato. Indique la sección de configuración de extremo preferida por nombre."}
+19-12-2018 11:02: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:04: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:05: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:07: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 11:08: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}

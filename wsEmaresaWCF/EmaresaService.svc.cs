@@ -114,7 +114,6 @@ namespace wsEmaresaWCF
                                                         <Entities>
                                                             <ProcesodeCompras>
                                                                 <NroSolicitudERP>ASD</NroSolicitudERP>
-                                                                <CentrodeCostos>ASD</CentrodeCostos>
                                                                 <FechaCotizacion>2018-12-11</FechaCotizacion>
                                                                 <FechaSolicitud>2018-12-11</FechaSolicitud>
                                                                 <Solicitante>ASD</Solicitante>
@@ -129,10 +128,10 @@ namespace wsEmaresaWCF
                                                                     <Tipo_Concepto>ASD</Tipo_Concepto>
                                                                     <DescripcionAmpliada>ASD</DescripcionAmpliada>
                                                                     <NombreProveedor>ASD</NombreProveedor>
-                                                                    <Cantidad>ASD</Cantidad>
-                                                                    <UnidadMedida>ASD</UnidadMedida>
-                                                                    <PrecioUnit>ASD</PrecioUnit>
-                                                                    <Neto>ASD</Neto>
+                                                                    <Cantidad>1</Cantidad>
+                                                                    <UnidadMedida>1</UnidadMedida>
+                                                                    <PrecioUnit>1</PrecioUnit>
+                                                                    <Neto>1</Neto>
                                                                     <Observacion>ASD</Observacion>
                                                                     <MotivoRechazo>ASD</MotivoRechazo>
                                                                 </DetalleCotizacion>
@@ -142,10 +141,9 @@ namespace wsEmaresaWCF
                                                 </Cases>
                                             </BizAgiWSParam>";
                     //crear instancia
-                    //BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
-                    //AGREGAR REFERENCIA A CAPA SOA BIZAGI
+                    BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
 
-                    //string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
+                    string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
                     //retornar salida
                     return salida;
                 }
