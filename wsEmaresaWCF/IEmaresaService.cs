@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Xml;
 
 namespace wsEmaresaWCF
 {
@@ -33,7 +34,7 @@ namespace wsEmaresaWCF
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
-        string GetJSONtoXML(string Json);
+        XmlNode GetJSONtoXML(object Json);
 
         
         [WebInvoke(UriTemplate = "/GetXMLtoJSON", 
@@ -57,7 +58,7 @@ namespace wsEmaresaWCF
         [DataMember]
         public string Xml { set; get; }
         [DataMember]
-        public string Json { set; get; }
+        public object Json { set; get; }
         [DataMember]
         public string Test { set; get; }
     }

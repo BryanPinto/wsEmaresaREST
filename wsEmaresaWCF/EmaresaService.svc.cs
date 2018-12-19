@@ -40,11 +40,12 @@ namespace wsEmaresaWCF
         //    return composite;
         //}
 
-        public string GetJSONtoXML(string Json)
+        public XmlNode GetJSONtoXML(object Json)
         {
             try
             {
-                var xmlNode = JsonConvert.DeserializeXmlNode(Json).OuterXml;
+                var jsonRequest = new JavaScriptSerializer().Serialize(Json);
+                var xmlNode = JsonConvert.DeserializeXmlNode(jsonRequest);
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
                 StringBuilder sb = new StringBuilder();
@@ -52,7 +53,7 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirJSONaXML] -- JSON: " + Json + " | " + "XML: " + xmlNode);
+                          "[ConvertirJSONaXML] -- JSON: " + jsonRequest + " | " + "XML: " + xmlNode.OuterXml);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 return xmlNode;
@@ -72,7 +73,7 @@ namespace wsEmaresaWCF
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida
-                return salida;
+                return GetJSONtoXML(salida);
             }
         }
 

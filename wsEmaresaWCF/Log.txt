@@ -146,3 +146,10 @@ Nombre del parámetro: s"}
 19-12-2018 11:05: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
 19-12-2018 11:07: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
 19-12-2018 11:08: [RetornaOK] -- Entrada: PRUEBA | Salida: {"Respuesta":"OK"}
+19-12-2018 19:04: [ConvertirJSONaXML] -- JSON: {} | XML: 
+19-12-2018 19:08: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: S. Line 0, position 0."}
+19-12-2018 19:09: [ConvertirJSONaXML] -- JSON: {} | XML: 
+19-12-2018 19:11: [ConvertirJSONaXML] -- Salida: {"Error":"XmlNodeConverter can only convert JSON that begins with an object."}
+19-12-2018 19:11: [ConvertirJSONaXML] -- Salida: {"Error":"XmlNodeConverter can only convert JSON that begins with an object."}
+19-12-2018 19:14: [ConvertirJSONaXML] -- JSON: {} | XML: 
+19-12-2018 19:14: [ConvertirJSONaXML] -- JSON: {} | XML: 
