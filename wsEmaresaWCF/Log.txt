@@ -177,3 +177,9 @@ Nombre del parámetro: s"}
 19-12-2018 19:51: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Error":"No había ningún extremo escuchando en http://172.17.40.93/Procesos/webservices/workflowenginesoa.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información."}
 20-12-2018 10:02: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}
 20-12-2018 10:05: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}
+20-12-2018 10:38: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: w. Line 0, position 0."}
+20-12-2018 10:40: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: w. Line 0, position 0."}
+20-12-2018 10:45: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+20-12-2018 10:50: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}
+20-12-2018 10:55: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}

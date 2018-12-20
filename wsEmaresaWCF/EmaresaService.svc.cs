@@ -40,7 +40,7 @@ namespace wsEmaresaWCF
         //    return composite;
         //}
 
-        public XmlNode GetJSONtoXML(object Json)
+        public Respuesta GetJSONtoXML(Dummy Json)
         {
             try
             {
@@ -56,7 +56,10 @@ namespace wsEmaresaWCF
                           "[ConvertirJSONaXML] -- JSON: " + jsonRequest + " | " + "XML: " + xmlNode.OuterXml);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
-                return xmlNode;
+                //return xmlNode;
+                Respuesta error = new Respuesta();
+                error.mensaje = xmlNode.OuterXml;
+                return (error);
             }
             catch (Exception ex)
             {
@@ -73,7 +76,10 @@ namespace wsEmaresaWCF
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida
-                return GetJSONtoXML(salida);
+                //return GetJSONtoXML(salida);
+                Respuesta error = new Respuesta();
+                error.mensaje = ex.Message;
+                return (error);
             }
         }
 

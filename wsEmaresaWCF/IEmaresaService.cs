@@ -46,7 +46,7 @@ namespace wsEmaresaWCF
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
-        XmlNode GetJSONtoXML(object Json);
+        Respuesta GetJSONtoXML(Dummy Json);
 
         
         [WebInvoke(UriTemplate = "/GetXMLtoJSON", 
