@@ -183,3 +183,10 @@ Nombre del parámetro: s"}
 Nombre del parámetro: s"}
 20-12-2018 10:50: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}
 20-12-2018 10:55: [RetornaOK] -- Entrada: Este es un mensaje en formato JSON | Salida: {"Respuesta":"OK"}
+20-12-2018 11:03: [RetornaOK] -- Entrada: wsEmaresaWCF.Dummy | Salida: {"Respuesta":"OK"}
+20-12-2018 11:08: [ConvertirJSONaXML] -- Salida: {"Error":"Unexpected character encountered while parsing value: w. Line 0, position 0."}
+20-12-2018 11:09: [ConvertirJSONaXML] -- Salida: {"Error":"El valor no puede ser nulo.
+Nombre del parámetro: s"}
+20-12-2018 11:10: [ConvertirJSONaXML] -- JSON: {"mensaje":null} | XML: <mensaje />
+20-12-2018 11:22: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":{"Entities":{"M_ProductosCargados":{"Id_Familia":"BASEMENT H|CHICAGO|J13010208|881222922","Pais":"1"}}}} | XML: <BizAgiWSParam><Entities><M_ProductosCargados><Id_Familia>BASEMENT H|CHICAGO|J13010208|881222922</Id_Familia><Pais>1</Pais></M_ProductosCargados></Entities></BizAgiWSParam>
+20-12-2018 11:46: [ConvertirJSONaXML] -- JSON: {"BizAgiWSParam":null} | XML: <BizAgiWSParam />

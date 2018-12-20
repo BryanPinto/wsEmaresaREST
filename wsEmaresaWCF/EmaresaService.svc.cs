@@ -40,11 +40,11 @@ namespace wsEmaresaWCF
         //    return composite;
         //}
 
-        public Respuesta GetJSONtoXML(Dummy Json)
+        public Dummy GetJSONtoXML(Dummy Json)
         {
             try
             {
-                var jsonRequest = Json.ToString();
+                var jsonRequest = JsonConvert.SerializeObject(Json);
                 var xmlNode = JsonConvert.DeserializeXmlNode(jsonRequest);
                 //Escribir log
                 string rutaLog = HttpRuntime.AppDomainAppPath;
@@ -59,7 +59,7 @@ namespace wsEmaresaWCF
                 //return xmlNode;
                 Respuesta error = new Respuesta();
                 error.mensaje = xmlNode.OuterXml;
-                return (error);
+                return (Json);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace wsEmaresaWCF
                 //return GetJSONtoXML(salida);
                 Respuesta error = new Respuesta();
                 error.mensaje = ex.Message;
-                return (error);
+                return (Json);
             }
         }
 
@@ -106,7 +106,7 @@ namespace wsEmaresaWCF
                     sb.Append(Environment.NewLine +
                               DateTime.Now.ToShortDateString() + " " +
                               DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + JsonString.mensaje + " | " + "Salida: " + salida);
+                              "[RetornaOK] -- Entrada: " + JsonString/*.mensaje*/ + " | " + "Salida: " + salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
 
