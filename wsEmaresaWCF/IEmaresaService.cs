@@ -43,38 +43,41 @@ namespace wsEmaresaWCF
     //ESTRUCTURA JSON EMARESA
     public class DocHeader
     {
-        public DateTime fechaCotizacion { get; set; }
-        public string numeroSolicitud { get; set; }
-        public string solicitante { get; set; }
         public string centroCosto { get; set; }
         public string condicionPago { get; set; }
+        public string numeroSolicitud { get; set; }
         public string observaciones { get; set; }
-        public int totalItems { get; set; }
+        public string solicitante { get; set; }
+        public long totalItems { get; set; }
     }
 
     public class DocLine
     {
+        public long cantidad { get; set; }
         public string codigoMercaderia { get; set; }
         public string descripcion { get; set; }
-        public int cantidad { get; set; }
-        public string unidadMedida { get; set; }
-        public string proveedor { get; set; }
-        public int precioUnitario { get; set; }
         public string observaciones { get; set; }
+        public long precioUnitario { get; set; }
+        public string proveedor { get; set; }
+        public string unidadMedida { get; set; }
+    }
+
+    public class Raiz
+    {
+        public string EMPRESA { get; set; }
+        public long IDMAEEDO { get; set; }
+        public string LIBRO { get; set; }
+        public string NUDO { get; set; }
+        public string TIDO { get; set; }
+        public DocHeader docHeader { get; set; }
+        public List<DocLine> docLines { get; set; }
+        public string docNumber { get; set; }
+        public string docType { get; set; }
     }
 
     public class RootObject
     {
-        public string docType { get; set; }
-        public DocHeader docHeader { get; set; }
-        public List<DocLine> docLines { get; set; }
-        public string docNumber { get; set; }
-        public int IDMAEEDO { get; set; }
-        public string TIDO { get; set; }
-        public string NUDO { get; set; }
-        public string LIBRO { get; set; }
-        public string EMPRESA { get; set; }
-        public DateTime FEEMDO { get; set; }
+        public Raiz Raiz { get; set; }
     }
     //FIN ESTRUCTURA
 
@@ -105,7 +108,7 @@ namespace wsEmaresaWCF
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
-        Dummy GetJSONtoXML(Dummy Json);
+        RootObject GetJSONtoXML(RootObject Json);
 
         
         [WebInvoke(UriTemplate = "/GetXMLtoJSON", 

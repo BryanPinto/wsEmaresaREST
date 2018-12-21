@@ -40,7 +40,7 @@ namespace wsEmaresaWCF
         //    return composite;
         //}
 
-        public Dummy GetJSONtoXML(Dummy Json)
+        public RootObject GetJSONtoXML(RootObject Json)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace wsEmaresaWCF
                 //return xmlNode;
                 Respuesta error = new Respuesta();
                 error.mensaje = xmlNode.OuterXml;
-                return (Json);
+                return Json;
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace wsEmaresaWCF
                 //return GetJSONtoXML(salida);
                 Respuesta error = new Respuesta();
                 error.mensaje = ex.Message;
-                return (Json);
+                return Json;
             }
         }
 
