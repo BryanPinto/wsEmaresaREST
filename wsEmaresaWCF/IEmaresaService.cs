@@ -43,6 +43,7 @@ namespace wsEmaresaWCF
     //ESTRUCTURA JSON EMARESA
     public class DocHeader
     {
+        public string fechaCotizacion { get; set; }
         public string centroCosto { get; set; }
         public string condicionPago { get; set; }
         public string numeroSolicitud { get; set; }
@@ -65,6 +66,7 @@ namespace wsEmaresaWCF
     public class Raiz
     {
         public string EMPRESA { get; set; }
+        public string FEEMDO { get; set; }
         public long IDMAEEDO { get; set; }
         public string LIBRO { get; set; }
         public string NUDO { get; set; }
