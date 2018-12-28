@@ -288,3 +288,4 @@ Nombre del parámetro: s"}
 28-12-2018 11:28: [RetornaOK] -- Entrada: wsEmaresaWCF.RootObject | Salida: {"Respuesta":"OK"}
 28-12-2018 12:04: [RetornaOK] -- Entrada: wsEmaresaWCF.RootObject | Salida: {"Respuesta":"OK"}
 28-12-2018 12:10: [RetornaOK] -- Entrada: wsEmaresaWCF.RootObject | Salida: {"Respuesta":"OK"}
+28-12-2018 17:01: [RetornaOK] -- Entrada: wsEmaresaWCF.RootObject | Salida: {"Respuesta":"OK"}

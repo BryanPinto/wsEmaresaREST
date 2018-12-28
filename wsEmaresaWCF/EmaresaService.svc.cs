@@ -240,48 +240,74 @@ namespace wsEmaresaWCF
             }
         }
 
-        public string InyeccionRandom(string Xml)
+        public EstadoCotizacion GetStatus(int response)
         {
-            try
+            
+            EstadoCotizacion json = new EstadoCotizacion();
+            if (response == 2)
             {
-                //Declarar variable vacía para convertir el xml a json
-                string json = string.Empty;
-                //Generar un nuevo documento XML
-                XmlDocument doc = new XmlDocument();
-                //Asignar al documento el XML enviado
-                doc.LoadXml(Xml);
-                //Utilizar variable json para realizar conversión
-                json = JsonConvert.SerializeXmlNode(doc);
-                //Escribir log
-                string rutaLog = HttpRuntime.AppDomainAppPath;
-                StringBuilder sb = new StringBuilder();
+                //Approve
+                json.codigoEstado = response;
+                json.detalleRespuesta = "Aprobado";
 
-                sb.Append(Environment.NewLine +
-                          DateTime.Now.ToShortDateString() + " " +
-                          DateTime.Now.ToShortTimeString() + ": " +
-                          "[InyeccionRandom] -- Xml: " + Xml + " | " + "JSON: " + json);
-                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
-                sb.Clear();
-                return json;
+
             }
-            catch (Exception ex)
+            else if (response == 1)
             {
-                //Replicar formato JSON para la respuesta error del método
-                string salida = "{\"Error\":\"" + ex.Message + "\"}";
-                //Escribir log
-                string rutaLog = HttpRuntime.AppDomainAppPath;
-                StringBuilder sb = new StringBuilder();
-
-                sb.Append(Environment.NewLine +
-                          DateTime.Now.ToShortDateString() + " " +
-                          DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirJSONaXML] -- Salida: " + salida);
-                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
-                sb.Clear();
-
-                return salida;
+                //Reject
+                json.codigoEstado = response;
+                json.detalleRespuesta = "Rechazado";
             }
+            else
+            {
+                //Undefined
+                json.codigoEstado = 0;
+                json.detalleRespuesta = "Estado Indefinido";
+            }
+            return (json);
         }
+        //public string InyeccionRandom(string Xml)
+        //{
+        //    try
+        //    {
+        //        //Declarar variable vacía para convertir el xml a json
+        //        string json = string.Empty;
+        //        //Generar un nuevo documento XML
+        //        XmlDocument doc = new XmlDocument();
+        //        //Asignar al documento el XML enviado
+        //        doc.LoadXml(Xml);
+        //        //Utilizar variable json para realizar conversión
+        //        json = JsonConvert.SerializeXmlNode(doc);
+        //        //Escribir log
+        //        string rutaLog = HttpRuntime.AppDomainAppPath;
+        //        StringBuilder sb = new StringBuilder();
+
+        //        sb.Append(Environment.NewLine +
+        //                  DateTime.Now.ToShortDateString() + " " +
+        //                  DateTime.Now.ToShortTimeString() + ": " +
+        //                  "[InyeccionRandom] -- Xml: " + Xml + " | " + "JSON: " + json);
+        //        System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+        //        sb.Clear();
+        //        return json;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Replicar formato JSON para la respuesta error del método
+        //        string salida = "{\"Error\":\"" + ex.Message + "\"}";
+        //        //Escribir log
+        //        string rutaLog = HttpRuntime.AppDomainAppPath;
+        //        StringBuilder sb = new StringBuilder();
+
+        //        sb.Append(Environment.NewLine +
+        //                  DateTime.Now.ToShortDateString() + " " +
+        //                  DateTime.Now.ToShortTimeString() + ": " +
+        //                  "[ConvertirJSONaXML] -- Salida: " + salida);
+        //        System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+        //        sb.Clear();
+
+        //        return salida;
+        //    }
+        //}
 
         //public string GetXMLtoJSON(string Xml)
         //{

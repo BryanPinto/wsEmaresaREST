@@ -57,7 +57,11 @@ namespace wsEmaresaWCF
         public string docNumber { get; set; }
         public string docType { get; set; }
     }
-
+    public class EstadoCotizacion 
+    {
+        public int codigoEstado { get; set; }
+        public string detalleRespuesta { get; set; }
+    }
     public class RootObject
     {
         public Raiz Raiz { get; set; }
@@ -95,13 +99,19 @@ namespace wsEmaresaWCF
         [OperationContract]
         RootObject GetJSONtoXML(RootObject Json);
 
-        
-        [WebInvoke(UriTemplate = "/GetXMLtoJSON", 
+        //[WebInvoke(UriTemplate = "/GetXMLtoJSON",
+        //   Method = "POST",
+        //   RequestFormat = WebMessageFormat.Xml,
+        //   ResponseFormat = WebMessageFormat.Json)]
+        //[OperationContract]
+        //string InyeccionRandom(string Xml);
+
+        [WebInvoke(UriTemplate = "/EstadoCotizacion", 
             Method = "POST",
             RequestFormat = WebMessageFormat.Xml,
             ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string InyeccionRandom(string Xml);
+        EstadoCotizacion GetStatus(int response);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
