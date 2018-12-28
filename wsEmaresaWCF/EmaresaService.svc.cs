@@ -78,8 +78,7 @@ namespace wsEmaresaWCF
                           "[ConvertirJSONaXML] -- Salida: " + salida);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
-                //retornar salida
-                //return GetJSONtoXML(salida);
+                //retornar mensaje de error
                 Respuesta error = new Respuesta();
                 error.mensaje = ex.Message;
                 return Json;
@@ -120,10 +119,7 @@ namespace wsEmaresaWCF
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
                     //fin log
-
-                    ////generar nueva instancia de respuesta, para retornar el mensaje de salida encapsulado en "error"
-                    //Respuesta error = new Respuesta();
-                    //error.mensaje = respuesta;
+                    
                     //Obtener valores de cada tag del XML transformado (aún en formato XML, NO STRING), para insertar valores en XML de creación de caso
                     string nroSolicitud = xmlNode.GetElementsByTagName("numeroSolicitud")[0].InnerText;
                     string fechaCotizacion = xmlNode.GetElementsByTagName("fechaCotizacion")[0].InnerText;
@@ -240,16 +236,15 @@ namespace wsEmaresaWCF
                 error.mensaje = ex.Message;
                 var json = new JavaScriptSerializer().Serialize(error);
 
-                //return (error);JsonString
                 return (respuestaSalida);
             }
         }
 
-        public string GetXMLtoJSON(string Xml)
+        public string InyeccionRandom(string Xml)
         {
             try
             {
-                //Declarar variable vacía para convertir el xml a json 
+                //Declarar variable vacía para convertir el xml a json
                 string json = string.Empty;
                 //Generar un nuevo documento XML
                 XmlDocument doc = new XmlDocument();
@@ -264,12 +259,10 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirXMLaJSON] -- XML: " + Xml + " | " + "Salida JSON: " + json);
+                          "[InyeccionRandom] -- Xml: " + Xml + " | " + "JSON: " + json);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
-                //retornar salida
-
-                return (json);
+                return json;
             }
             catch (Exception ex)
             {
@@ -282,49 +275,59 @@ namespace wsEmaresaWCF
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirXMLaJSON] -- Salida: " + salida);
+                          "[ConvertirJSONaXML] -- Salida: " + salida);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
-                //retornar salida
+
                 return salida;
             }
         }
 
-        //string xmlCreacion = @"<?xml version=""1.0""?>
-        //                                <BizAgiWSParam>
-        //                                    <domain>domain</domain>
-        //                                    <userName>admon</userName>
-        //                                    <Cases>
-        //                                        <Case>
-        //                                            <Process>CopyProcesoDeCompras</Process>
-        //                                            <Entities>
-        //                                                <ProcesodeCompras>
-        //                                                    <NroSolicitudERP>ASD</NroSolicitudERP>
-        //                                                    <FechaCotizacion>2018-12-11</FechaCotizacion>
-        //                                                    <FechaSolicitud>2018-12-11</FechaSolicitud>
-        //                                                    <Solicitante>ASD</Solicitante>
-        //                                                    <Condp_Pago>ASD</Condp_Pago>
-        //                                                    <Tipo_compra>ASD</Tipo_compra>
-        //                                                    <ObservacionSolicitud>ASD</ObservacionSolicitud>
-        //                                                    <Itemgeneral>1</Itemgeneral>
-        //                                                    <ItemSolicitud>1</ItemSolicitud>
-        //                                                    <TotalCotizado>1</TotalCotizado>
-        //                                                    <DetalleCotizacion>
-        //                                                        <CodProducto>ASD</CodProducto> CODIGO MERCANCIA?
-        //                                                        <Tipo_Concepto>ASD</Tipo_Concepto>
-        //                                                        <DescripcionAmpliada>ASD</DescripcionAmpliada> DESCRIPCION AMPLIADA?
-        //                                                        <NombreProveedor>ASD</NombreProveedor> OK
-        //                                                        <Cantidad>1</Cantidad> OK
-        //                                                        <UnidadMedida>1</UnidadMedida>
-        //                                                        <PrecioUnit>1</PrecioUnit> OK
-        //                                                        <Neto>1</Neto> OK
-        //                                                        <Observacion>ASD</Observacion> OBSERVACIONES?
-        //                                                        <MotivoRechazo>ASD</MotivoRechazo>
-        //                                                    </DetalleCotizacion>
-        //                                                </ProcesodeCompras>
-        //                                            </Entities>
-        //                                        </Case>
-        //                                    </Cases>
-        //                                </BizAgiWSParam>";
+        //public string GetXMLtoJSON(string Xml)
+        //{
+        //    try
+        //    {
+        //        //Declarar variable vacía para convertir el xml a json 
+        //        string json = string.Empty;
+        //        //Generar un nuevo documento XML
+        //        XmlDocument doc = new XmlDocument();
+        //        //Asignar al documento el XML enviado
+        //        doc.LoadXml(Xml);
+        //        //Utilizar variable json para realizar conversión
+        //        json = JsonConvert.SerializeXmlNode(doc);
+        //        //Escribir log
+        //        string rutaLog = HttpRuntime.AppDomainAppPath;
+        //        StringBuilder sb = new StringBuilder();
+
+        //        sb.Append(Environment.NewLine +
+        //                  DateTime.Now.ToShortDateString() + " " +
+        //                  DateTime.Now.ToShortTimeString() + ": " +
+        //                  "[ConvertirXMLaJSON] -- XML: " + Xml + " | " + "Salida JSON: " + json);
+        //        System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+        //        sb.Clear();
+        //        //retornar salida
+
+        //        return (json);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //Replicar formato JSON para la respuesta error del método
+        //        string salida = "{\"Error\":\"" + ex.Message + "\"}";
+        //        //Escribir log
+        //        string rutaLog = HttpRuntime.AppDomainAppPath;
+        //        StringBuilder sb = new StringBuilder();
+
+        //        sb.Append(Environment.NewLine +
+        //                  DateTime.Now.ToShortDateString() + " " +
+        //                  DateTime.Now.ToShortTimeString() + ": " +
+        //                  "[ConvertirXMLaJSON] -- Salida: " + salida);
+        //        System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+        //        sb.Clear();
+        //        //retornar salida
+        //        return salida;
+        //    }
+        //}
+
+
     }
 }

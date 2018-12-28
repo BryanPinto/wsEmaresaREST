@@ -9,6 +9,7 @@ using System.Xml;
 
 namespace wsEmaresaWCF
 {
+    //Estructura para retornar mensajes dentro de los métodos
     public class Dummy
     {
         public string mensaje { get; set; }
@@ -19,26 +20,6 @@ namespace wsEmaresaWCF
         public string mensaje { get; set; }
     }
 
-    //public class MProductosCargados
-    //{
-    //public string Id_Familia { get; set; }
-    //public string Pais { get; set; }
-    //}
-
-    //public class Entities
-    //{
-    //    public MProductosCargados M_ProductosCargados { get; set; }
-    //}
-
-    //public class BizAgiWSParam
-    //{
-    //    public Entities Entities { get; set; }
-    //}
-
-    //public class Dummy
-    //{
-    //    public BizAgiWSParam BizAgiWSParam { get; set; }
-    //}
 
     //ESTRUCTURA JSON EMARESA
     public class DocHeader
@@ -96,9 +77,6 @@ namespace wsEmaresaWCF
         [WebGet(UriTemplate = "/GetData")]
         [OperationContract]
         string GetData();
-
-        //[OperationContract]
-        //ServiciosWeb GetDataUsingDataContract(ServiciosWeb composite);
         
         [WebInvoke(UriTemplate = "/GetOK", 
             Method = "POST",
@@ -120,9 +98,10 @@ namespace wsEmaresaWCF
         
         [WebInvoke(UriTemplate = "/GetXMLtoJSON", 
             Method = "POST",
+            RequestFormat = WebMessageFormat.Xml,
             ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
-        string GetXMLtoJSON(string Xml);
+        string InyeccionRandom(string Xml);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
