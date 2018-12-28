@@ -62,47 +62,108 @@ namespace wsEmaresaWCF
                 //return xmlNode;
                 Respuesta error = new Respuesta();
                 error.mensaje = xmlRespuesta;
+                return Json;
+            }
+            catch (Exception ex)
+            {
+                //Replicar formato JSON para la respuesta error del método
+                string salida = "{\"Error\":\"" + ex.Message + "\"}";
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath;
+                StringBuilder sb = new StringBuilder();
 
-                //Obtener valores de cada tag del XML transformado (aún en formato XML, NO STRING), para insertar valores en XML de creación de caso
-                string nroSolicitud = xmlNode.GetElementsByTagName("numeroSolicitud")[0].InnerText;
-                string fechaCotizacion = xmlNode.GetElementsByTagName("fechaCotizacion")[0].InnerText;
-                string centroCosto = xmlNode.GetElementsByTagName("centroCosto")[0].InnerText;
-                string fechaSoliFeemdo = xmlNode.GetElementsByTagName("FEEMDO")[0].InnerText;
-                string solicitante = xmlNode.GetElementsByTagName("solicitante")[0].InnerText;
-                string condPago = xmlNode.GetElementsByTagName("condicionPago")[0].InnerText;
-                string observaciones = xmlNode.GetElementsByTagName("observaciones")[0].InnerText;
-                int totalItems = Convert.ToInt32(xmlNode.GetElementsByTagName("totalItems")[0].InnerText);
+                sb.Append(Environment.NewLine +
+                          DateTime.Now.ToShortDateString() + " " +
+                          DateTime.Now.ToShortTimeString() + ": " +
+                          "[ConvertirJSONaXML] -- Salida: " + salida);
+                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                sb.Clear();
+                //retornar salida
+                //return GetJSONtoXML(salida);
+                Respuesta error = new Respuesta();
+                error.mensaje = ex.Message;
+                return Json;
+            }
+        }
 
-                //Eliminar espacios en blanco de los valores
-                fechaCotizacion = fechaCotizacion.Trim();
-                centroCosto = centroCosto.Trim();
-                fechaSoliFeemdo = fechaSoliFeemdo.Trim();
-                solicitante = solicitante.Trim();
-                condPago = condPago.Trim();
-                observaciones = observaciones.Trim();
+        public Retorno GetOK(RootObject JsonString)
+        {
+            try
+            {
+                string respuesta = "OK";
+                //variable para lanzar número al azar entre 0 y 10
+                var NumAzar = new Random().Next(0, 10);
 
-                //Elementos de la coleccion
-                string xmlProductos = String.Empty;
-                string productos = String.Empty;
-                for (var i = 0; i < xmlNode.GetElementsByTagName("docLines").Count; i++)
+                //Si NumAzar es 1 u 8, se ejecuta el catch
+                if (NumAzar == 1 || NumAzar == 8)
                 {
-                    long codMercaderia = Convert.ToInt64(xmlNode.GetElementsByTagName("codigoMercaderia")[i].InnerText);
-                    string descripcion = xmlNode.GetElementsByTagName("descripcion")[i].InnerText;
-                    string proveedor = xmlNode.GetElementsByTagName("proveedor")[i].InnerText;
-                    int cantidad = Convert.ToInt32(xmlNode.GetElementsByTagName("cantidad")[i].InnerText);
-                    string unidadMedida = xmlNode.GetElementsByTagName("unidadMedida")[i].InnerText;
-                    int precioUnitario = Convert.ToInt32(xmlNode.GetElementsByTagName("precioUnitario")[i].InnerText);
-                    string observaciones2 = xmlNode.GetElementsByTagName("observaciones")[i + 1].InnerText;
+                    throw new Exception("Error en respuesta");
+                }
+                else
+                {
+                    Retorno respuestaSalida = new Retorno();
+                    respuestaSalida.MensajeSalida = respuesta;
+                    //respuestaSalida.root = JsonString;
+                    //Serializar objeto JSON
+                    var jsonRequest = JsonConvert.SerializeObject(JsonString);
+                    //Deserializar el archivo JSON para
+                    var xmlNode = JsonConvert.DeserializeXmlNode(jsonRequest);
+                    //Replicar formato JSON para la respuesta del método
+                    string salida = "{\"Respuesta\":\"" + respuesta + "\"}";
+                    //Escribir log
+                    string rutaLog = HttpRuntime.AppDomainAppPath;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append(Environment.NewLine +
+                              DateTime.Now.ToShortDateString() + " " +
+                              DateTime.Now.ToShortTimeString() + ": " +
+                              "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
+                    System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
+                    sb.Clear();
+                    //fin log
+
+                    ////generar nueva instancia de respuesta, para retornar el mensaje de salida encapsulado en "error"
+                    //Respuesta error = new Respuesta();
+                    //error.mensaje = respuesta;
+                    //Obtener valores de cada tag del XML transformado (aún en formato XML, NO STRING), para insertar valores en XML de creación de caso
+                    string nroSolicitud = xmlNode.GetElementsByTagName("numeroSolicitud")[0].InnerText;
+                    string fechaCotizacion = xmlNode.GetElementsByTagName("fechaCotizacion")[0].InnerText;
+                    string centroCosto = xmlNode.GetElementsByTagName("centroCosto")[0].InnerText;
+                    string fechaSoliFeemdo = xmlNode.GetElementsByTagName("FEEMDO")[0].InnerText;
+                    string solicitante = xmlNode.GetElementsByTagName("solicitante")[0].InnerText;
+                    string condPago = xmlNode.GetElementsByTagName("condicionPago")[0].InnerText;
+                    string observaciones = xmlNode.GetElementsByTagName("observaciones")[0].InnerText;
+                    int totalItems = Convert.ToInt32(xmlNode.GetElementsByTagName("totalItems")[0].InnerText);
 
                     //Eliminar espacios en blanco de los valores
-                    descripcion = descripcion.Trim();
-                    proveedor = proveedor.Trim();
-                    unidadMedida = unidadMedida.Trim();
-                    observaciones2 = observaciones2.Trim();
+                    fechaCotizacion = fechaCotizacion.Trim();
+                    centroCosto = centroCosto.Trim();
+                    fechaSoliFeemdo = fechaSoliFeemdo.Trim();
+                    solicitante = solicitante.Trim();
+                    condPago = condPago.Trim();
+                    observaciones = observaciones.Trim();
 
-                    int neto = precioUnitario * cantidad;
+                    //Elementos de la coleccion
+                    string xmlProductos = String.Empty;
+                    string productos = String.Empty;
+                    for (var i = 0; i < xmlNode.GetElementsByTagName("docLines").Count; i++)
+                    {
+                        long codMercaderia = Convert.ToInt64(xmlNode.GetElementsByTagName("codigoMercaderia")[i].InnerText);
+                        string descripcion = xmlNode.GetElementsByTagName("descripcion")[i].InnerText;
+                        string proveedor = xmlNode.GetElementsByTagName("proveedor")[i].InnerText;
+                        int cantidad = Convert.ToInt32(xmlNode.GetElementsByTagName("cantidad")[i].InnerText);
+                        string unidadMedida = xmlNode.GetElementsByTagName("unidadMedida")[i].InnerText;
+                        int precioUnitario = Convert.ToInt32(xmlNode.GetElementsByTagName("precioUnitario")[i].InnerText);
+                        string observaciones2 = xmlNode.GetElementsByTagName("observaciones")[i + 1].InnerText;
 
-                    xmlProductos += @" <DetalleCotizacion>
+                        //Eliminar espacios en blanco de los valores
+                        descripcion = descripcion.Trim();
+                        proveedor = proveedor.Trim();
+                        unidadMedida = unidadMedida.Trim();
+                        observaciones2 = observaciones2.Trim();
+
+                        int neto = precioUnitario * cantidad;
+
+                        xmlProductos += @" <DetalleCotizacion>
                                                                 <CodProducto>" + codMercaderia + @"</CodProducto>
                                                                 <Tipo_Concepto></Tipo_Concepto>
                                                                 <DescripcionAmpliada>" + descripcion + @"</DescripcionAmpliada>
@@ -114,11 +175,11 @@ namespace wsEmaresaWCF
                                                                 <Observacion>" + observaciones2 + @"</Observacion>
                                                                 <MotivoRechazo></MotivoRechazo>
                                                             </DetalleCotizacion>";
-                }
+                    }
 
-                //Crear caso con extracto de XML
-                //declarar xml de creación
-                string xmlCreacion = @"<?xml version=""1.0""?>
+                    //Crear caso con extracto de XML
+                    //declarar xml de creación
+                    string xmlCreacion = @"<?xml version=""1.0""?>
                                         <BizAgiWSParam>
                                             <domain>domain</domain>
                                             <userName>admon</userName>
@@ -144,123 +205,24 @@ namespace wsEmaresaWCF
                                             </Cases>
                                         </BizAgiWSParam>";
 
-                //Reemplazar "\r" ,"\n" y "\t" del xml de creación
-                xmlCreacion = xmlCreacion.Replace("\n", "");
-                xmlCreacion = xmlCreacion.Replace("\t", "");
-                xmlCreacion = xmlCreacion.Replace("\r", "");
-                //string xmlCreacion = @"<?xml version=""1.0""?>
-                //                                <BizAgiWSParam>
-                //                                    <domain>domain</domain>
-                //                                    <userName>admon</userName>
-                //                                    <Cases>
-                //                                        <Case>
-                //                                            <Process>CopyProcesoDeCompras</Process>
-                //                                            <Entities>
-                //                                                <ProcesodeCompras>
-                //                                                    <NroSolicitudERP>ASD</NroSolicitudERP>
-                //                                                    <FechaCotizacion>2018-12-11</FechaCotizacion>
-                //                                                    <FechaSolicitud>2018-12-11</FechaSolicitud>
-                //                                                    <Solicitante>ASD</Solicitante>
-                //                                                    <Condp_Pago>ASD</Condp_Pago>
-                //                                                    <Tipo_compra>ASD</Tipo_compra>
-                //                                                    <ObservacionSolicitud>ASD</ObservacionSolicitud>
-                //                                                    <Itemgeneral>1</Itemgeneral>
-                //                                                    <ItemSolicitud>1</ItemSolicitud>
-                //                                                    <TotalCotizado>1</TotalCotizado>
-                //                                                    <DetalleCotizacion>
-                //                                                        <CodProducto>ASD</CodProducto>
-                //                                                        <Tipo_Concepto>ASD</Tipo_Concepto>
-                //                                                        <DescripcionAmpliada>ASD</DescripcionAmpliada>
-                //                                                        <NombreProveedor>ASD</NombreProveedor>
-                //                                                        <Cantidad>1</Cantidad>
-                //                                                        <UnidadMedida>1</UnidadMedida>
-                //                                                        <PrecioUnit>1</PrecioUnit>
-                //                                                        <Neto>1</Neto>
-                //                                                        <Observacion>ASD</Observacion>
-                //                                                        <MotivoRechazo>ASD</MotivoRechazo>
-                //                                                    </DetalleCotizacion>
-                //                                                    <DetalleCotizacion>
-                //                                                        <CodProducto>ASD</CodProducto>
-                //                                                        <Tipo_Concepto>ASD</Tipo_Concepto>
-                //                                                        <DescripcionAmpliada>ASD</DescripcionAmpliada>
-                //                                                        <NombreProveedor>ASD</NombreProveedor>
-                //                                                        <Cantidad>1</Cantidad>
-                //                                                        <UnidadMedida>1</UnidadMedida>
-                //                                                        <PrecioUnit>1</PrecioUnit>
-                //                                                        <Neto>1</Neto>
-                //                                                        <Observacion>ASD</Observacion>
-                //                                                        <MotivoRechazo>ASD</MotivoRechazo>
-                //                                                    </DetalleCotizacion>
-                //                                                </ProcesodeCompras>
-                //                                            </Entities>
-                //                                        </Case>
-                //                                    </Cases>
-                //                                </BizAgiWSParam>";
-                //crear instancia
-                BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
+                    //Reemplazar "\r" ,"\n" y "\t" del xml de creación
+                    xmlCreacion = xmlCreacion.Replace("\n", "");
+                    xmlCreacion = xmlCreacion.Replace("\t", "");
+                    xmlCreacion = xmlCreacion.Replace("\r", "");
 
-                string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
-                //
-                return Json;
-            }
-            catch (Exception ex)
-            {
-                //Replicar formato JSON para la respuesta error del método
-                string salida = "{\"Error\":\"" + ex.Message + "\"}";
-                //Escribir log
-                string rutaLog = HttpRuntime.AppDomainAppPath;
-                StringBuilder sb = new StringBuilder();
+                    //crear instancia
+                    BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
 
-                sb.Append(Environment.NewLine +
-                          DateTime.Now.ToShortDateString() + " " +
-                          DateTime.Now.ToShortTimeString() + ": " +
-                          "[ConvertirJSONaXML] -- Salida: " + salida);
-                System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
-                sb.Clear();
-                //retornar salida
-                //return GetJSONtoXML(salida);
-                Respuesta error = new Respuesta();
-                error.mensaje = ex.Message;
-                return Json;
-            }
-        }
-
-        public Respuesta GetOK(Dummy JsonString)
-        {
-            try
-            {
-                string respuesta = "OK";
-                //variable para lanzar número al azar entre 0 y 10
-                var NumAzar = new Random().Next(0, 10);
-
-                //Si NumAzar es 1 u 8, se ejecuta el catch
-                if (NumAzar == 1 || NumAzar == 8)
-                {
-                    throw new Exception("Error en respuesta");
-                }
-                else
-                {
-                    //Replicar formato JSON para la respuesta del método
-                    string salida = "{\"Respuesta\":\"" + respuesta + "\"}";
-                    //Escribir log
-                    string rutaLog = HttpRuntime.AppDomainAppPath;
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append(Environment.NewLine +
-                              DateTime.Now.ToShortDateString() + " " +
-                              DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
-                    System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
-                    sb.Clear();
-                    //fin log
-
-                    //generar nueva instancia de respuesta, para retornar el mensaje de salida encapsulado en "error"
-                    Respuesta error = new Respuesta();
-                    error.mensaje = respuesta;
-                    return (error);
+                    string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
+                    //
+                    //return (error);
+                    return (respuestaSalida);
                 }
             }
             catch (Exception ex)
             {
+                Retorno respuestaSalida = new Retorno();
+                respuestaSalida.MensajeSalida = ex.Message;
                 //Replicar formato JSON para la respuesta error del método
                 string salida = "{\"Error\":\"" + ex.Message + "\"}";
                 //Escribir log
@@ -278,7 +240,8 @@ namespace wsEmaresaWCF
                 error.mensaje = ex.Message;
                 var json = new JavaScriptSerializer().Serialize(error);
 
-                return (error);
+                //return (error);JsonString
+                return (respuestaSalida);
             }
         }
 

@@ -81,6 +81,11 @@ namespace wsEmaresaWCF
     {
         public Raiz Raiz { get; set; }
     }
+    public class Retorno
+    {
+        public RootObject root { get; set; }
+        public string MensajeSalida { get; set; }
+    }
     //FIN ESTRUCTURA
 
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
@@ -101,7 +106,7 @@ namespace wsEmaresaWCF
             RequestFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare)]
         [OperationContract]
-        Respuesta GetOK(Dummy JsonString);
+        Retorno GetOK(RootObject JsonString);
 
         
         [WebInvoke(UriTemplate = "/GetJSONtoXML", 
