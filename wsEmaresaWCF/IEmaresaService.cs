@@ -106,9 +106,9 @@ namespace wsEmaresaWCF
         //[OperationContract]
         //string InyeccionRandom(string Xml);
 
-        [WebInvoke(UriTemplate = "/EstadoCotizacion", 
+        [WebInvoke(UriTemplate = "/GetStatus", 
             Method = "POST",
-            RequestFormat = WebMessageFormat.Xml,
+            
             ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         EstadoCotizacion GetStatus(int response);
