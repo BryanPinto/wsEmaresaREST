@@ -108,7 +108,6 @@ namespace wsEmaresaWCF
 
         [WebInvoke(UriTemplate = "/GetStatus", 
             Method = "POST",
-            
             ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         EstadoCotizacion GetStatus(int response);
@@ -131,5 +130,7 @@ namespace wsEmaresaWCF
         public object Json { set; get; }
         [DataMember]
         public string Test { set; get; }
+        [DataMember]
+        public int response { set; get; }
     }
 }
