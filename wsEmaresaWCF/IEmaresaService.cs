@@ -25,7 +25,7 @@ namespace wsEmaresaWCF
     public class DocHeader
     {
         public string fechaCotizacion { get; set; }
-        public string centroCosto { get; set; }
+        public int centroCosto { get; set; }
         public string condicionPago { get; set; }
         public string numeroSolicitud { get; set; }
         public string observaciones { get; set; }

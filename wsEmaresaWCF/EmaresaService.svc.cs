@@ -89,17 +89,12 @@ namespace wsEmaresaWCF
         {
             try
             {
-                string respuesta = "OK";
-                //variable para lanzar número al azar entre 0 y 10
-                var NumAzar = new Random().Next(0, 10);
+                    string respuesta = "Inicio";
 
-                //Si NumAzar es 1 u 8, se ejecuta el catch
-                if (NumAzar == 1 || NumAzar == 8)
-                {
-                    throw new Exception("Error en respuesta");
-                }
-                else
-                {
+                    //Escribir log
+                    string rutaLog = HttpRuntime.AppDomainAppPath; StringBuilder sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[--------------------Inicio Método--------------------] "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
+                
                     Retorno respuestaSalida = new Retorno();
                     respuestaSalida.MensajeSalida = respuesta;
                     //respuestaSalida.root = JsonString;
@@ -110,40 +105,77 @@ namespace wsEmaresaWCF
                     //Replicar formato JSON para la respuesta del método
                     string salida = "{\"Respuesta\":\"" + respuesta + "\"}";
                     //Escribir log
-                    string rutaLog = HttpRuntime.AppDomainAppPath;
-                    StringBuilder sb = new StringBuilder();
+                     rutaLog = HttpRuntime.AppDomainAppPath;
+                     sb = new StringBuilder();
                     sb.Append(Environment.NewLine +
                               DateTime.Now.ToShortDateString() + " " +
                               DateTime.Now.ToShortTimeString() + ": " +
-                              "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
+                              "[RetornaOK] -- Entrada: " + jsonRequest + " | " + "Salida: " + salida);
                     System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                     sb.Clear();
                     //fin log
-                    
+                    //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Obtener valores de cada tag del XML transformado (aún en formato XML, NO STRING)- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     //Obtener valores de cada tag del XML transformado (aún en formato XML, NO STRING), para insertar valores en XML de creación de caso
                     string nroSolicitud = xmlNode.GetElementsByTagName("numeroSolicitud")[0].InnerText;
                     string fechaCotizacion = xmlNode.GetElementsByTagName("fechaCotizacion")[0].InnerText;
-                    string centroCosto = xmlNode.GetElementsByTagName("centroCosto")[0].InnerText;
+                    int centroCosto = Convert.ToInt32(xmlNode.GetElementsByTagName("centroCosto")[0].InnerText);
                     string fechaSoliFeemdo = xmlNode.GetElementsByTagName("FEEMDO")[0].InnerText;
                     string solicitante = xmlNode.GetElementsByTagName("solicitante")[0].InnerText;
                     string condPago = xmlNode.GetElementsByTagName("condicionPago")[0].InnerText;
                     string observaciones = xmlNode.GetElementsByTagName("observaciones")[0].InnerText;
+                    string TIDO = xmlNode.GetElementsByTagName("TIDO")[0].InnerText;
+                    string NUDO = xmlNode.GetElementsByTagName("NUDO")[0].InnerText;
+                    string EMPRESA = xmlNode.GetElementsByTagName("EMPRESA")[0].InnerText;
                     int totalItems = Convert.ToInt32(xmlNode.GetElementsByTagName("totalItems")[0].InnerText);
+                
+                //rescatar id centro de costos para buscar valor del atributo "Codigo"
+                //crear instancia
+                BizagiSOAEntity.EntityManagerSOASoapClient servicio = new BizagiSOAEntity.EntityManagerSOASoapClient();
+                //armar xml para obtener entidad
+                string xmlCentro = @"<BizAgiWSParam>
+                     <EntityData>
+                        <EntityName>CentrodeCostos</EntityName>
+                            <Filters>
+                                <![CDATA[Codigo = '"+centroCosto+@"']]>
+                            </Filters>
+                     </EntityData>
+                    </BizAgiWSParam>";
+                
+                string CodigoBizagi = servicio.getEntitiesAsString(xmlCentro);
+                
+                //var xmlCodigo = JsonConvert.DeserializeXmlNode(CodigoBizagi);
+                XmlDocument doc = new XmlDocument();
+                //Asignar al documento el XML enviado
+                doc.LoadXml(CodigoBizagi);
 
-                    //Eliminar espacios en blanco de los valores
-                    fechaCotizacion = fechaCotizacion.Trim();
-                    centroCosto = centroCosto.Trim();
+                int idCodigoCentro = Convert.ToInt32(doc.GetElementsByTagName("CentrodeCostos")[0].Attributes["key"].Value);
+
+
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -xmlCentro ==> " + xmlCentro + " - "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+                //Eliminar espacios en blanco de los valores
+                fechaCotizacion = fechaCotizacion.Trim();
+                    //centroCosto = centroCosto.Trim();
                     fechaSoliFeemdo = fechaSoliFeemdo.Trim();
                     solicitante = solicitante.Trim();
                     condPago = condPago.Trim();
                     observaciones = observaciones.Trim();
-
+                    TIDO = TIDO.Trim();
+                    NUDO = NUDO.Trim();
+                    EMPRESA = EMPRESA.Trim();
+                    
+                    //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Elementos de la coleccion- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     //Elementos de la coleccion
                     string xmlProductos = String.Empty;
                     string productos = String.Empty;
                     for (var i = 0; i < xmlNode.GetElementsByTagName("docLines").Count; i++)
                     {
-                        long codMercaderia = Convert.ToInt64(xmlNode.GetElementsByTagName("codigoMercaderia")[i].InnerText);
+                        string codMercaderia = xmlNode.GetElementsByTagName("codigoMercaderia")[i].InnerText;
                         string descripcion = xmlNode.GetElementsByTagName("descripcion")[i].InnerText;
                         string proveedor = xmlNode.GetElementsByTagName("proveedor")[i].InnerText;
                         int cantidad = Convert.ToInt32(xmlNode.GetElementsByTagName("cantidad")[i].InnerText);
@@ -159,7 +191,7 @@ namespace wsEmaresaWCF
 
                         int neto = precioUnitario * cantidad;
 
-                        xmlProductos += @" <DetalleCotizacion>
+                                         xmlProductos += @" <DetalleCotizacion>
                                                                 <CodProducto>" + codMercaderia + @"</CodProducto>
                                                                 <Tipo_Concepto></Tipo_Concepto>
                                                                 <DescripcionAmpliada>" + descripcion + @"</DescripcionAmpliada>
@@ -171,10 +203,16 @@ namespace wsEmaresaWCF
                                                                 <Observacion>" + observaciones2 + @"</Observacion>
                                                                 <MotivoRechazo></MotivoRechazo>
                                                             </DetalleCotizacion>";
+                        //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Elemento "+i+"- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     }
 
                     //Crear caso con extracto de XML
                     //declarar xml de creación
+                    //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Crear caso con extracto de XML y declarar xml de creación- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     string xmlCreacion = @"<?xml version=""1.0""?>
                                         <BizAgiWSParam>
                                             <domain>domain</domain>
@@ -186,10 +224,13 @@ namespace wsEmaresaWCF
                                                         <ProcesodeCompras>
                                                             <NroSolicitudERP>" + nroSolicitud + @"</NroSolicitudERP>
                                                             <FechaCotizacion>" + fechaCotizacion + @"</FechaCotizacion>
-                                                            <CentroCosto>" + centroCosto + @"</CentroCosto>
+                                                            <CentrodeCostos>" + idCodigoCentro + @"</CentrodeCostos>
                                                             <FechaSolicitud>" + fechaSoliFeemdo + @"</FechaSolicitud>
                                                             <Solicitante>" + solicitante + @"</Solicitante>
                                                             <Condp_Pago>" + condPago + @"</Condp_Pago>
+                                                            <TIDO> " + TIDO + @"</TIDO>
+                                                            <NUDO> " + NUDO + @"</NUDO>
+                                                            <EMPRESA> "+ EMPRESA + @"</EMPRESA>
                                                             <Tipo_compra></Tipo_compra>
                                                             <ObservacionSolicitud>" + observaciones + @"</ObservacionSolicitud>
                                                             <Itemgeneral></Itemgeneral>
@@ -200,41 +241,88 @@ namespace wsEmaresaWCF
                                                 </Case>
                                             </Cases>
                                         </BizAgiWSParam>";
-
+                    
+                    //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + @"[Punto método] -Reemplazar \r ,\n y \t del xml de creación- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     //Reemplazar "\r" ,"\n" y "\t" del xml de creación
                     xmlCreacion = xmlCreacion.Replace("\n", "");
                     xmlCreacion = xmlCreacion.Replace("\t", "");
                     xmlCreacion = xmlCreacion.Replace("\r", "");
-
+                    
+                    //Escribir log
+                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Crear instancia Bizagi SOA- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    //fin log
                     //crear instancia
                     BizagiCapaSOA.WorkflowEngineSOASoapClient serviceEngine = new BizagiCapaSOA.WorkflowEngineSOASoapClient();
+                    
+
 
                     string respuestaBizagi = serviceEngine.createCasesAsString(xmlCreacion);
-                    //
-                    //return (error);
-                    return (respuestaSalida);
-                }
+
+                    
+                //
+                //return (error);
+                respuestaSalida.MensajeSalida = respuestaBizagi;
+
+
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Respuesta Bizagi ==> " + respuestaSalida.MensajeSalida + " - "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+
+                XmlDocument xml = new XmlDocument();
+                xml.LoadXml(respuestaBizagi);
+                respuestaSalida.MensajeSalida = xml.GetElementsByTagName("processId")[0].InnerText;
+
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Numero Caso ==> " + respuestaSalida.MensajeSalida + " - "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[--------------------Fin método creación--------------------] "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+                return (respuestaSalida);
+                
             }
             catch (Exception ex)
             {
+                //Escribir log
+                string rutaLog = HttpRuntime.AppDomainAppPath; StringBuilder sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[--------------------Inicio excepción creación--------------------] "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+
+                //Creación objeto retorno
                 Retorno respuestaSalida = new Retorno();
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Excepción] -Creación objeto Retorno-"); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+
+                //Serializar objeto JSON
+                var jsonRequest = JsonConvert.SerializeObject(JsonString);
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Excepción] -Serializar objeto Json-"); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
+
+
                 respuestaSalida.MensajeSalida = ex.Message;
                 //Replicar formato JSON para la respuesta error del método
                 string salida = "{\"Error\":\"" + ex.Message + "\"}";
                 //Escribir log
-                string rutaLog = HttpRuntime.AppDomainAppPath;
-                StringBuilder sb = new StringBuilder();
+                 rutaLog = HttpRuntime.AppDomainAppPath;
+                 sb = new StringBuilder();
 
                 sb.Append(Environment.NewLine +
                           DateTime.Now.ToShortDateString() + " " +
                           DateTime.Now.ToShortTimeString() + ": " +
-                          "[RetornaOK] -- Entrada: " + JsonString + " | " + "Salida: " + salida);
+                          "[Excepción] -- Entrada: " + jsonRequest + " | " + "Salida: " + salida);
                 System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString());
                 sb.Clear();
                 //retornar salida
                 Respuesta error = new Respuesta();
                 error.mensaje = ex.Message;
                 var json = new JavaScriptSerializer().Serialize(error);
+
+                //Escribir log
+                rutaLog = HttpRuntime.AppDomainAppPath; sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[--------------------Fin excepción creación--------------------] "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                //fin log
 
                 return (respuestaSalida);
             }

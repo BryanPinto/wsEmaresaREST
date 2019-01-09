@@ -69,6 +69,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\BizagiSOAEntity\configuration91.svcinfo" />
+    <None Include="Connected Services\BizagiSOAEntity\configuration.svcinfo" />
+    <None Include="Connected Services\BizagiSOAEntity\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="EmaresaService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -76,6 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connected Services\BizagiCapaSOA\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\BizagiSOAEntity\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -91,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\BizagiCapaSOA\workflowenginesoa.wsdl" />
+    <None Include="Connected Services\BizagiSOAEntity\entitymanagersoa.wsdl" />
     <None Include="packages.config" />
     <Content Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -106,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\BizagiCapaSOA\" />
+    <WCFMetadataStorage Include="Connected Services\BizagiSOAEntity\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
