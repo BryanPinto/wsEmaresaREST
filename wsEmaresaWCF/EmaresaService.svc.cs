@@ -128,7 +128,9 @@ namespace wsEmaresaWCF
                     string TIDO = xmlNode.GetElementsByTagName("TIDO")[0].InnerText;
                     string NUDO = xmlNode.GetElementsByTagName("NUDO")[0].InnerText;
                     string EMPRESA = xmlNode.GetElementsByTagName("EMPRESA")[0].InnerText;
-                    int totalItems = Convert.ToInt32(xmlNode.GetElementsByTagName("totalItems")[0].InnerText);
+                    string NOKOFU = xmlNode.GetElementsByTagName("nokofu")[0].InnerText;
+                    string Email = xmlNode.GetElementsByTagName("email")[0].InnerText;
+                int totalItems = Convert.ToInt32(xmlNode.GetElementsByTagName("totalItems")[0].InnerText);
                 
                 //rescatar id centro de costos para buscar valor del atributo "Codigo"
                 //crear instancia
@@ -166,9 +168,11 @@ namespace wsEmaresaWCF
                     TIDO = TIDO.Trim();
                     NUDO = NUDO.Trim();
                     EMPRESA = EMPRESA.Trim();
-                    
-                    //Escribir log
-                     rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Elementos de la coleccion- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
+                    NOKOFU = NOKOFU.Trim();
+                    Email = Email.Trim();
+
+        //Escribir log
+        rutaLog = HttpRuntime.AppDomainAppPath;  sb = new StringBuilder(); sb.Append(Environment.NewLine + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + ": " + "[Punto método] -Elementos de la coleccion- "); System.IO.File.AppendAllText(rutaLog + "Log.txt", sb.ToString()); sb.Clear();
                     //fin log
                     //Elementos de la coleccion
                     string xmlProductos = String.Empty;
@@ -178,6 +182,7 @@ namespace wsEmaresaWCF
                         string codMercaderia = xmlNode.GetElementsByTagName("codigoMercaderia")[i].InnerText;
                         string descripcion = xmlNode.GetElementsByTagName("descripcion")[i].InnerText;
                         string proveedor = xmlNode.GetElementsByTagName("proveedor")[i].InnerText;
+                        string nombreProveedor = xmlNode.GetElementsByTagName("nombreProveedor")[i].InnerText;
                         int cantidad = Convert.ToInt32(xmlNode.GetElementsByTagName("cantidad")[i].InnerText);
                         string unidadMedida = xmlNode.GetElementsByTagName("unidadMedida")[i].InnerText;
                         int precioUnitario = Convert.ToInt32(xmlNode.GetElementsByTagName("precioUnitario")[i].InnerText);
@@ -188,6 +193,7 @@ namespace wsEmaresaWCF
                         proveedor = proveedor.Trim();
                         unidadMedida = unidadMedida.Trim();
                         observaciones2 = observaciones2.Trim();
+                        nombreProveedor = nombreProveedor.Trim();
 
                         int neto = precioUnitario * cantidad;
 
@@ -195,11 +201,14 @@ namespace wsEmaresaWCF
                                                                 <CodProducto>" + codMercaderia + @"</CodProducto>
                                                                 <Tipo_Concepto></Tipo_Concepto>
                                                                 <DescripcionAmpliada>" + descripcion + @"</DescripcionAmpliada>
-                                                                <NombreProveedor>" + proveedor + @"</NombreProveedor>
+                                                                <NombreProveedor>" + nombreProveedor + @"</NombreProveedor>
+                                                                <Proveedor>" + proveedor+  @"</Proveedor>
                                                                 <Cantidad>" + cantidad + @"</Cantidad>
                                                                 <UnidadMedida>" + unidadMedida + @"</UnidadMedida>
+                                                                <PrecioUnitario> " +precioUnitario+ @"</PrecioUnitario>
                                                                 <PrecioUnit>" + precioUnitario + @"</PrecioUnit>
                                                                 <Neto>" + neto + @"</Neto>
+                                                                <ValorNeto> " +neto +@"</ValorNeto>
                                                                 <Observacion>" + observaciones2 + @"</Observacion>
                                                                 <MotivoRechazo></MotivoRechazo>
                                                             </DetalleCotizacion>";
@@ -228,9 +237,14 @@ namespace wsEmaresaWCF
                                                             <FechaSolicitud>" + fechaSoliFeemdo + @"</FechaSolicitud>
                                                             <Solicitante>" + solicitante + @"</Solicitante>
                                                             <Condp_Pago>" + condPago + @"</Condp_Pago>
-                                                            <TIDO> " + TIDO + @"</TIDO>
-                                                            <NUDO> " + NUDO + @"</NUDO>
-                                                            <EMPRESA> "+ EMPRESA + @"</EMPRESA>
+                                                            <MailSolicitante>" +Email+ @"</MailSolicitante>
+                                                            <CamposRandom>
+                                                                <TIDO> " + TIDO + @"</TIDO>
+                                                                <NUDO> " + NUDO + @"</NUDO>
+                                                                <EMPRESA> "+ EMPRESA + @"</EMPRESA>
+                                                                <NOKOFU> " + NOKOFU + @"</NOKOFU>
+                                                                <Email> " + Email + @"</Email>
+                                                            </CamposRandom>
                                                             <Tipo_compra></Tipo_compra>
                                                             <ObservacionSolicitud>" + observaciones + @"</ObservacionSolicitud>
                                                             <Itemgeneral></Itemgeneral>

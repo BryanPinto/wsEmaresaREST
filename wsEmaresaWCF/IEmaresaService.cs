@@ -31,6 +31,8 @@ namespace wsEmaresaWCF
         public string observaciones { get; set; }
         public string solicitante { get; set; }
         public long totalItems { get; set; }
+        public string nokofu { get; set; }
+        public string email { get; set; }
     }
 
     public class DocLine
@@ -41,6 +43,7 @@ namespace wsEmaresaWCF
         public string observaciones { get; set; }
         public long precioUnitario { get; set; }
         public string proveedor { get; set; }
+        public string nombreProveedor { get; set; }
         public string unidadMedida { get; set; }
     }
 
